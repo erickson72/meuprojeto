@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HyperOpt Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="bootstrap-4.6.2-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>HyperOpt Dashboard</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#configuracao">Configuração de Hiperparâmetros</a></li>
+        <li><a href="#tecnicas">Técnicas de Otimização</a></li>
+        <li><a href="#comparacao">Comparar Resultados</a></li>
+        <li><a href="#visualizacao">Visualização de Resultados</a></li>
+        <li><a href="#relatorio">Relatório de Performance</a></li>
+      </ul>
+    </nav>
+
+    <main>
+     
+      <section id="configuracao">
+        <h2>Escolha técnica de Hiperparâmetros</h2>
+        <form class="form-inline" id="parametros-form">
+        <form id="parametros-form">
+          <div class="form-group">
+          <label for="taxa-aprendizado">Taxa de Aprendizado:</label>
+          <input type="number" class="form-control" id="taxa-aprendizado"
+            step="0.01"
+            min="0"
+            max="1"
+            required
+          />
+        </div>
+
+          <div class="form-group">
+          <label for="epocas">Número de Épocas:</label>
+          <input type="number" class="form-control" id="epocas" min="1" required />
+          </div>
+
+          <div class="form-group">
+          <label for="batch-size">Batch Size:</label>
+          <input type="number" class="form-control" id="batch-size" min="1" required />
+          </div>
+
+          <input type="submit" value="Salvar Configurações" />
+        </form>
+      </section>
+
+      <section id="tecnicas">
+        <h2>Técnicas de Otimização</h2>
+        <form id="tecnicas-form">
+          <label for="tecnica">Selecione a técnica de otimização:</label>
+          <select id="tecnica">
+            <option value="random">Random Search</option>
+            <option value="grid">Grid Search</option>
+            <option value="bayesian">Bayesian Optimization</option>
+          </select>
+        </form>
+      </section>
+
+      <section id="comparacao">
+        <h2>Comparar Resultados</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Algoritmos classificadores</th>
+              <th>Hiperparâmetros</th>
+              <th>Acurácia</th>
+              <th>F1-Score</th>
+              <th>Precisão</th>
+              <th>Recall</th>
+            </tr>
+          </thead>
+          <tbody id="resultados">
+            <tr>
+                        <td>Modelo 1</td>
+                        <td>Learning Rate: 0.01, Epochs: 50</td>
+                        <td>0.92</td>
+                        <td>0.88</td>
+                        <td>0.90</td>
+                        <td>0.87</td>
+                    </tr>
+                    <tr>
+                        <td>Modelo 2</td>
+                        <td>Learning Rate: 0.001, Epochs: 100</td>
+                        <td>0.95</td>
+                        <td>0.90</td>
+                        <td>0.92</td>
+                        <td>0.89</td>
+                    </tr>
+    
+          </tbody>
+        </table>
+      </section>
+
+      <section id="visualizacao">
+        <h2>Visualização de Resultados</h2>
+        <div id="graficos">
+         
+          <h3>Gráfico de Acurácia</h3>
+          <canvas id="grafico-acuracia" width="400" height="200"></canvas>
+
+          <h3>Gráfico de Perda</h3>
+          <canvas id="grafico-perda" width="400" height="200"></canvas>
+        </div>
+      </section>
+
+      <section id="relatorio"></section>
+        <h2>Relatório de Performance</h2>
+        <button id="downloadPdf">Baixar Relatório (PDF)</button>
+        <button id="downloadCsv">Baixar Relatório (CSV)</button>
+    </section>
+    
+    </main>
+
+    <footer>
+      <p>&copy; 2024 HyperOpt Dashboard</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="scripts.js"></script>
+  </body>
+</html>
